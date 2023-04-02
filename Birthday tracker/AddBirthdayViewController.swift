@@ -35,12 +35,13 @@ class AddBirthdayViewController: UIViewController {
         let newBirthday = Birthday(context: context)
         newBirthday.firstName = firstName
         newBirthday.lastName = lastName
-        newBirthday.birthdate = birthDate as Date? // возможно без перевода в формат Date можно обойтись
+        newBirthday.birthdate = birthDate as Date?
         newBirthday.birthdayID = UUID().uuidString
         
         if let uniqueId = newBirthday.birthdayID {
             
             print("birthdayId: \(uniqueId)")
+            print("Данные сохранены \(lastName)")
         }
         
         do {

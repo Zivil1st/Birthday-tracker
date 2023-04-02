@@ -14,6 +14,7 @@ class BirthdaysTableViewController: UITableViewController {
     let dateFormatter = DateFormatter()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +26,13 @@ class BirthdaysTableViewController: UITableViewController {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest = Birthday.fetchRequest() as NSFetchRequest<Birthday>
+            
+            //  Сортировка имен
+            let sortDescription1 = NSSortDescriptor (key: "lastName", ascending: true)
+            let sortDescription2 = NSSortDescriptor (key: "firstName", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescription1, sortDescription2]
+            // Конец сортировки имен
+            
             do {
                 birthdays = try context.fetch(fetchRequest)
                 
@@ -84,7 +92,7 @@ class BirthdaysTableViewController: UITableViewController {
      }
     
     
-    /*
+    
      // Override to support editing the table view.
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
@@ -107,7 +115,6 @@ class BirthdaysTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    */
     
     /*
      // Override to support rearranging the table view.
