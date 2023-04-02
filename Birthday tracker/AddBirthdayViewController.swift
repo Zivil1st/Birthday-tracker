@@ -14,6 +14,7 @@ class AddBirthdayViewController: UIViewController {
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var birthdatePicker: UIDatePicker!
+  //  @IBOutlet var addBirthdayScene: UIView!
     
     
     override func viewDidLoad() {
@@ -24,6 +25,8 @@ class AddBirthdayViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func saveTaped(_ sender: UIBarButtonItem) {
+        
+        print("The save button was tapped.")
         
         let firstName = firstNameTextField.text ?? ""
         let lastName = lastNameTextField.text ?? ""

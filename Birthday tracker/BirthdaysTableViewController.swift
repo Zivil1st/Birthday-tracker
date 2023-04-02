@@ -20,8 +20,11 @@ class BirthdaysTableViewController: UITableViewController {
         
         dateFormatter.dateStyle = .full
         dateFormatter.timeStyle = .none
+    }
         
-        func viewWillAppear (_ animated: Bool) {
+        
+        
+        override func viewWillAppear (_ animated: Bool) { // проблема была здесь !!!!! не было добавлена override
             super.viewWillAppear(animated)
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
@@ -50,7 +53,7 @@ class BirthdaysTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+    
     
     
     
@@ -114,7 +117,7 @@ class BirthdaysTableViewController: UITableViewController {
             
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-    }
+     }
     
     /*
      // Override to support rearranging the table view.
