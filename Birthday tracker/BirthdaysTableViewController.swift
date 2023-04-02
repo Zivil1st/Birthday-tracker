@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class BirthdaysTableViewController: UITableViewController {
     
@@ -102,6 +103,13 @@ class BirthdaysTableViewController: UITableViewController {
         if birthdays.count > indexPath.row {
             
             let birthday = birthdays[indexPath.row]
+            
+            // Начало удаления дня рождения
+            if let identifier = birthday.birthdayID {
+                let center = UNUserNotificationCenter.current()
+                center.removePendingNotificationRequests(withIdentifiers: [identifier])
+            }
+            // Конец удаления дня рождения
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
